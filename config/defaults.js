@@ -1,5 +1,8 @@
 module.exports = {
-
+  ci: false,
+  docker: {
+    'privileged': false
+  },
   // Hostname of this docker worker
   host: 'localhost',
 

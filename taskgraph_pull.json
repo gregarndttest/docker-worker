@@ -1,0 +1,38 @@
+{
+  "tasks": [
+    {
+      "task": {
+        "metadata": {
+          "name": "Docker-worker tests",
+          "description": "Runs entire docker-worker test suite",
+          "source": "http://todo.com/soon",
+          "owner": "mozilla@mozilla.org"
+        },
+        "workerType": "worker-ci-tests",
+        "provisionerId": "aws-provisioner",
+        "payload": {
+          "cache": {
+            "gaia-misc-caches": "/home/tester/caches/"
+          },
+          "env": {
+            "REPORTER": "mocha-tbpl-reporter"
+          },
+          "command": [
+            "entrypoint",
+            "./bin/ci run build_unit"
+          ],
+          "image": "taskcluster/gaia-taskenv:0.7.2",
+          "maxRunTime": 1800
+        },
+        "extra": {
+          "treeherder": {
+            "groupSymbol": "GB",
+            "groupName": "Gaia build tests",
+            "symbol": "GBU"
+          }
+        },
+        "schedulerId": "task-graph-scheduler"
+      }
+    },
+  ]
+}
