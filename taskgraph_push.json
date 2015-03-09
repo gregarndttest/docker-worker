@@ -10,7 +10,6 @@
         },
         "workerType": "worker-ci-test",
         "provisionerId": "aws-provisioner",
-        "image": "gregarndt/worker-ci-tests:latest",
         "payload": {
           "command": [
             "/bin/bash",
