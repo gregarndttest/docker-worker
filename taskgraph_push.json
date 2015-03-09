@@ -8,7 +8,7 @@
           "source": "http://todo.com/soon",
           "owner": "mozilla@mozilla.org"
         },
-        "workerType": "worker-ci-tests",
+        "workerType": "worker-ci-test",
         "provisionerId": "aws-provisioner",
         "image": "gregarndt/worker-ci-tests:latest",
         "payload": {
