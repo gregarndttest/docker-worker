@@ -16,7 +16,7 @@
             "/bin/bash",
             "-c",
             "entrypoint",
-            "npm test",
+            "npm test"
           ],
           "image": "gregarndt/worker-ci:0.0.1",
           "maxRunTime": 3600
