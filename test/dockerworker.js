@@ -57,7 +57,7 @@ export default class DockerWorker {
       Cmd: [
         '/bin/bash', '-c',
          [
-          'babel-node --experimental /worker/bin/worker.js',
+          '/worker/node_modules/babel/bin/babel-node --experimental /worker/bin/worker.js',
           '--host test',
           '--worker-group', 'random-local-worker',
           '--worker-id', this.workerId,
