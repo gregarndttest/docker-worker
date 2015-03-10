@@ -1,7 +1,7 @@
 module.exports = {
-  ci: false,
+  ci: true,
   docker: {
-    'privileged': false
+    privileged: true
   },
   // Hostname of this docker worker
   host: 'localhost',
@@ -112,5 +112,17 @@ module.exports = {
     password: process.env.TESTDROID_PASSWORD
   },
 
-  dockerWorkerPrivateKey: '/etc/docker-worker-priv.pem'
+  dockerWorkerPrivateKey: '/etc/docker-worker-priv.pem',
+
+  test: {
+    taskcluster: {
+      clientId: process.env.TEST_TASKCLUSTER_CLIENT_ID,
+      accessToken: process.env.TEST_TASKCLUSTER_ACCESS_TOKEN
+    },
+
+    pulse: {
+      username: process.env.TEST_PULSE_USERNAME,
+      password: process.env.TEST_PULSE_PASSWORD
+    }
+  }
 };
