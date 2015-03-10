@@ -12,7 +12,7 @@
         "provisionerId": "aws-provisioner",
         "payload": {
           "command": [
-            "npm install && npm test"
+            "npm install && ./node_modules/mocha/bin/mocha --harmony test/integration/azure_live_log_test.js"
           ],
           "image": "gregarndt/worker-ci:0.0.1",
           "maxRunTime": 3600
