@@ -15,7 +15,7 @@
             "/bin/bash",
             "-c",
             "entrypoint",
-            "npm install && npm test",
+            "npm install && npm test"
           ],
           "image": "gregarndt/worker-ci:0.0.1",
           "maxRunTime": 3600
