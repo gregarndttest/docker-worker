@@ -12,9 +12,6 @@
         "provisionerId": "aws-provisioner",
         "payload": {
           "command": [
-            "/bin/bash",
-            "-c",
-            "entrypoint",
             "npm install && npm test"
           ],
           "image": "gregarndt/worker-ci:0.0.1",
