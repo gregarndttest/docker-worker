@@ -12,7 +12,7 @@
         "provisionerId": "ga-aws-provisioner",
         "payload": {
           "command": [
-            "npm install -g babel-node && npm install && DEBUG=* ./node_modules/mocha/bin/mocha --bail test/volume_cache_test.js"
+            "npm install -g babel && npm install && DEBUG=* ./node_modules/mocha/bin/mocha --bail test/volume_cache_test.js"
           ],
           "image": "gregarndt/worker-ci:0.0.2",
           "maxRunTime": 3600,
