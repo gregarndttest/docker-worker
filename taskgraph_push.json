@@ -8,8 +8,8 @@
           "source": "http://todo.com/soon",
           "owner": "mozilla@mozilla.org"
         },
-        "workerType": "ga-worker-ci-test",
-        "provisionerId": "ga-aws-provisioner",
+        "workerType": "worker-ci-test",
+        "provisionerId": "aws-provisioner",
         "payload": {
           "command": [
             "npm install -g babel && npm install && DEBUG=* ./node_modules/mocha/bin/mocha --bail test/volume_cache_test.js"
