@@ -20,7 +20,7 @@ suite('Task Polling', () => {
   test('do not poll if diskspace threshold is reached', async () => {
     settings.configure({
       capacityManagement: {
-        diskspaceThreshold: 50 * 1000000000
+        diskspaceThreshold: 50 * 50000000000
       }
     })
     worker = new TestWorker(DockerWorker);

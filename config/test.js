@@ -20,5 +20,9 @@ module.exports = {
     volumeCachePath: path.join(__dirname, '..', 'test', 'tmp')
   },
 
+  capacityManagement: {
+    diskspaceThreshold: 1,
+  },
+
   dockerWorkerPrivateKey: './test/docker-worker-priv.pem'
 };
