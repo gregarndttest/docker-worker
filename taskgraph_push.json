@@ -8,14 +8,17 @@
           "source": "http://todo.com/soon",
           "owner": "mozilla@mozilla.org"
         },
-        "workerType": "worker-ci-test",
-        "provisionerId": "aws-provisioner",
+        "workerType": "ga-worker-ci-test",
+        "provisionerId": "ga-aws-provisioner",
         "payload": {
           "command": [
-            "npm install && npm test"
+            "npm install -g babel-node && npm install && DEBUG=* ./node_modules/mocha/bin/mocha --bail test/volume_cache_test.js"
           ],
-          "image": "gregarndt/worker-ci:0.0.1",
-          "maxRunTime": 3600
+          "image": "gregarndt/worker-ci:0.0.2",
+          "maxRunTime": 3600,
+          "features": {
+            "privileged": true
+          }
         },
         "extra": {
         },

@@ -8,23 +8,22 @@
           "source": "http://todo.com/soon",
           "owner": "mozilla@mozilla.org"
         },
-        "workerType": "worker-ci-tests",
+        "workerType": "worker-ci-test",
         "provisionerId": "aws-provisioner",
-        "image": "gregarndt/worker-ci-tests:latest",
         "payload": {
           "command": [
-            "/bin/bash",
-            "-c",
-            "entrypoint",
-            "npm test",
+            "npm install && npm test"
           ],
-          "image": "gregarndt/worker-ci:0.0.1",
-          "maxRunTime": 3600
+          "image": "gregarndt/worker-ci:0.0.2",
+          "maxRunTime": 3600,
+          "features": {
+            "privileged": true
+          }
         },
         "extra": {
         },
         "schedulerId": "task-graph-scheduler"
       }
-    },
+    }
   ]
 }
