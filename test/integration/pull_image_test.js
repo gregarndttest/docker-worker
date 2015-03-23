@@ -6,7 +6,7 @@ suite('pull image', function() {
   var dockerUtils = require('dockerode-process/utils');
   var cmd = require('./helper/cmd');
 
-  var IMAGE = 'taskcluster/test-ubuntu';
+  var IMAGE = 'ubuntu:12.10';
   test('ensure image can be pulled', co(function* () {
     yield dockerUtils.removeImageIfExists(docker, IMAGE);
     var result = yield testworker({
