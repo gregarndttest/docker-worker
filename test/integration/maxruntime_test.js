@@ -1,8 +1,13 @@
 import testworker from '../post_task';
 import DockerWorker from '../dockerworker';
 import TestWorker from '../testworker';
+import expires from './helper/expires';
 
 let worker;
+
+async function sleep(duration) {
+  return new Promise(accept => setTimeout(accept, duration));
+}
 
 suite('worker timeouts', () => {
   setup(async () => {
@@ -25,7 +30,7 @@ suite('worker timeouts', () => {
         maxRunTime: maxRunTime
       }
     });
- 
+
     // Get task specific results
     assert.equal(result.run.state, 'failed', 'task should have failed');
     assert.equal(result.run.reasonResolved, 'failed', 'task should have failed');
@@ -75,7 +80,6 @@ suite('worker timeouts', () => {
 
     // Let's make sure the task ran out of time first before moving on
     assert.equal(maxRunTimeResult.run.state, 'failed', 'task should have failed');
-    console.log(maxRunTimeResult.log);
     assert.ok(
       maxRunTimeResult.log.includes(`Reason: Task timeout after 10`),
       'Task should contain logs about timeout'
@@ -101,6 +105,40 @@ suite('worker timeouts', () => {
       maxRunTimeResult.run.workerId,
       successfulResult.run.workerId,
       'Tasks were not completed by the same workers'
+    );
+  });
+
+  test('task times out when uploading artifact', async () => {
+    let maxRunTime = 5;
+    let result = await worker.postToQueue({
+      payload: {
+        image:          'taskcluster/test-ubuntu',
+        command:        [
+          '/bin/bash', '-c',
+          'mkdir /artifacts/ && ' +
+          'dd if=/dev/zero of=/artifacts/test.html bs=1024 count=0 seek=$[1024*20] && ' +
+          'ls -lah /artifacts'
+        ],
+        maxRunTime: maxRunTime,
+        artifacts: {
+          'public/test.html': {
+            type: 'file',
+            expires: expires(),
+            path: '/artifacts/test.html',
+          }
+        }
+      }
+    });
+
+    assert.equal(
+      result.run.state,
+      'failed',
+      'Task was completed successfully but should have failed'
+    );
+
+    assert.ok(
+      result.log.includes(`Reason: Task timeout after ${maxRunTime}`),
+      'Task should contain logs about timeout'
     );
   });
 });
