@@ -6,6 +6,7 @@ O<!-- START doctoc generated TOC please keep comment here to allow auto update -
 - [Docker Worker](#docker-worker)
   - [Requirements](#requirements)
   - [Usage](#usage)
+O
     - [Configuration](#configuration)
     - [Directory Structure](#directory-structure)
   - [Running tests](#running-tests)
